@@ -12,11 +12,13 @@
             $scope.messageStyle = 'text-success';
             $scope.textStyle = 'has-success';
 
-            if($scope.foodItems == '') {
+            var lenFoodItems = getLength($scope.foodItems);
+
+            if($scope.foodItems.trim() == '' || lenFoodItems === 0) {
                 $scope.message = 'Please enter data first';
                 $scope.messageStyle = 'text-danger';
                 $scope.textStyle = 'has-error';
-            } else if(getLength($scope.foodItems) <= 3) {
+            } else if(lenFoodItems <= 3) {
                 $scope.message = 'Enjoy!';
             } else {
                 $scope.message = 'Too much!';
