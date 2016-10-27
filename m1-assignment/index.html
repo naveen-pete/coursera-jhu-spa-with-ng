@@ -11,21 +11,23 @@
 <body>
   <div class="container" ng-controller="LunchCheckController">
     <h1>Lunch Checker</h1>
-        <div class="form-group {{textStyle}}">
-            <input id="lunch-menu" type="text"
-              placeholder="list comma separated dishes you usually have for lunch"
-              class="form-control"
-              ng-model="foodItems">
-        </div>
-        <div class="form-group">
-            <button class="btn btn-default" ng-click="onCheckIfTooMuch()">Check If Too Much</button>
-        </div>
-        <div class="form-group message {{messageStyle}}">
-          <!-- Your message can go here. -->
-          {{message}}
-        </div>
+    <div class="form-group {{textStyle}}">
+      <input id="lunch-menu" type="text"
+        placeholder="list comma separated dishes you usually have for lunch"
+        class="form-control"
+        ng-model="foodItems">
+      <span class="help-block bg-info">
+        Note: An empty item, such as, , , is NOT considered as an item towards calculating the count.
+      </span>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-default" ng-click="onCheckIfTooMuch()">Check If Too Much</button>
+    </div>
+    <div class="form-group message {{messageStyle}}">
+      {{message}}
+    </div>
+    <div class="pull-right"><a href="../index.html">Home</a></div>
   </div>
-  <div class="pull-right"><a href="../index.html">Home</a></div>
   <script src="./lib/angular.min.js"></script>
   <script src="./scripts/app.js"></script>
 </body>
