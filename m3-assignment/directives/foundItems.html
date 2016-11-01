@@ -4,7 +4,7 @@
             <h4>Items Matching Search Term: "{{ctrl.searchTerm}}"</h4>
         </div>
         <div class="col-md-12">
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -20,7 +20,8 @@
                         <td>{{item.name}}</td>
                         <td>{{item.short_name}}</td>
                         <td>{{item.description}}</td>
-                        <td><button ng-click="ctrl.onRemove({index: $index})">Don't want this one!</button></td>
+                        <td><button class="btn btn-info" 
+                            ng-click="ctrl.onRemove({index: $index})">Don't want this one!</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -28,7 +29,7 @@
     </div>
     <div ng-if="ctrl.foundItems.length === 0">
         <div class="col-md-12">
-            <h4>Nothing found!</h4>
+            <h4 class="text-danger">Nothing found!</h4>
         </div>
     </div>
 </div>
