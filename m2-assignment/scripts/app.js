@@ -33,16 +33,17 @@
         ];
 
         var boughtItems = [];
-
-        this.getToBuyItems = function() {
+        
+        var service = this;
+        service.getToBuyItems = function() {
             return toBuyItems;
         };
 
-        this.getBoughtItems = function() {
+        service.getBoughtItems = function() {
             return boughtItems;
         };
 
-        this.buyItem = function(index) {
+        service.buyItem = function(index) {
             var removedItems = toBuyItems.splice(index, 1);
             boughtItems.push(removedItems[0]);
             console.log('Bought Item:', removedItems[0]);
