@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="NarrowItDownApp">
   <head>
     <title>Narrow Down Your Menu Choice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,18 +10,42 @@
     <script src="scripts/app.js"></script>
   </head>
 <body>
-   <div class="container">
-    <h1>Narrow Down Your Chinese Menu Choice</h1>
-
-    <div class="form-group">
-      <input type="text" placeholder="search term" class="form-control">
+   <div class="container" ng-controller="NarrowItDownController as ctrl">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Narrow Down Your Chinese Menu Choice</h1>
+      </div>
     </div>
-    <div class="form-group narrow-button">
-      <button class="btn btn-primary">Narrow It Down For Me!</button>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="text" placeholder="search term" 
+              class="form-control" ng-model="ctrl.searchTerm"
+              ng-change="ctrl.searchTermChanged()">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group narrow-button">
+          <button class="btn btn-primary" ng-click="ctrl.findItems()">Narrow It Down For Me!</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" ng-if="ctrl.searchTerm.trim().length === 0">
+      <div class="col-md-4">
+        <h4>Enter Search Term.</h4>
+      </div>
     </div>
 
     <!-- found-items should be implemented as a component -->
-    <found-items found-items="...." on-remove="...."></found-items>
+    <found-items search-term="{{ctrl.searchTerm}}" 
+        found-items="ctrl.found" 
+        on-remove="ctrl.removeItem(index)"
+        ng-if="ctrl.searchTerm.trim().length > 0 && ctrl.showFoundItems">
+    </found-items>
+
+    <div class="pull-right"><a href="../index.html">Home</a></div>
   </div>
 
 </body>
