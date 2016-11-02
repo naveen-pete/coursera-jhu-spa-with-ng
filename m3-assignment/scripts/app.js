@@ -16,13 +16,13 @@
             console.log('ctrl.findItems() called!');
 
             if(ctrl.searchTerm.trim().length > 0) {
-                var promise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
-
-                promise.then(function(foundItems) {
-                    console.log('ctrl.findItems() - foundItems:', foundItems);
-                    ctrl.found = foundItems;
-                    ctrl.showFoundItems = true;
-                })
+                MenuSearchService.getMatchedMenuItems(ctrl.searchTerm).then(
+                    function(foundItems) {
+                        console.log('ctrl.findItems() - foundItems:', foundItems);
+                        ctrl.found = foundItems;
+                        ctrl.showFoundItems = true;
+                    }
+                );
             } else {
                 ctrl.showFoundItems = false;
             }
@@ -40,17 +40,16 @@
         };
     }
 
-    MenuSearchService.$inject = ['$q', '$http'];
-    function MenuSearchService($q, $http) {
+    MenuSearchService.$inject = ['$http'];
+    function MenuSearchService($http) {
         var service = this;
 
         service.getMatchedMenuItems = function(searchTerm) {
             console.log('service.getMatchedMenuItems() called!');
             console.log('service.getMatchedMenuItems() - searchTerm:', searchTerm);
-            var deferred = $q.defer();
             var foundItems = [];
 
-            $http({method: 'GET', url: 'https://davids-restaurant.herokuapp.com/menu_items.json'}).then(
+            return $http({method: 'GET', url: 'https://davids-restaurant.herokuapp.com/menu_items.json'}).then(
                 function(response) {
                     var menuItems = response.data.menu_items;
                     console.log('service.getMatchedMenuItems() - menuItems:', menuItems);
@@ -65,16 +64,9 @@
 
                     console.log('service.getMatchedMenuItems() - foundItems:', foundItems);
                     console.log('service.getMatchedMenuItems() - foundItems.length:', foundItems.length);
-                    deferred.resolve(foundItems);
-                }, 
-                function(response) {
-                    console.log('service.getMatchedMenuItems() - Error: Could not access server.');
-                    console.log('service.getMatchedMenuItems() - Status:', response.status);
-                    console.log('service.getMatchedMenuItems() - Status Text:', response.statusText);
-                    deferred.reject(foundItems);
-                });
-            
-            return deferred.promise;
+                    return foundItems;
+                }
+            );
         };
     }
 
