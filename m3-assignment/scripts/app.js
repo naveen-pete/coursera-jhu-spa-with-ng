@@ -11,6 +11,7 @@
         ctrl.searchTerm = '';
         ctrl.found = [];
         ctrl.showFoundItems = false;
+        ctrl.message = 'Enter Search Term.';
 
         ctrl.findItems = function() {
             console.log('ctrl.findItems() called!');
@@ -25,6 +26,7 @@
                 );
             } else {
                 ctrl.showFoundItems = false;
+                ctrl.message = 'Nothing Found!';
             }
         };
 
@@ -37,6 +39,12 @@
         ctrl.searchTermChanged = function() {
             ctrl.found = [];
             ctrl.showFoundItems = false;
+            ctrl.message = 'Enter Search Term.';
+        };
+
+        ctrl.getStyle = function() {
+            var style = ctrl.message === 'Nothing Found!' ? 'text-danger' : 'text-info'; 
+            return style;
         };
     }
 
