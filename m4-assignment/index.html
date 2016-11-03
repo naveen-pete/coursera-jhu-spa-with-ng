@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app='MenuApp'>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/app-styles.css">
+    <title>Menu App - Module 4 Assignment</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Menu App</h3>
+            </div>
+            <div class="panel-body">
+              <dl class="dl-horizontal">
+                <dt>Course:</dt> <dd>Single Page Web Applications with AngularJS</dd>
+                <dt>Module #4:</dt> <dd>Components, Events, Modules, and Routing</dd>
+                <dt>Assignment:</dt> <dd>Restaurant Menu App - Master/Detail View</dd>
+                <dt>Submitted by:</dt> <dd>Naveen Pete</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <ui-view></ui-view>
+        </div>
+      </div>
+
+    </div>
+
+    <loading-spinner></loading-spinner>
+
+    <!-- Libraries -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+
+    <!-- Modules -->
+    <script src="src/app.module.js"></script>
+    <script src="src/spinner/spinner.module.js"></script>
+
+    <!-- Routes -->
+    <script src="src/app.routes.js"></script>
+
+    <!-- 'MenuApp' module artifacts -->
+
+    <!-- 'Spinner' module artifacts -->
+    <script src="src/spinner/loadingspinner.component.js"></script>
+
+  </body>
+</html>
