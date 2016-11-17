@@ -7,13 +7,7 @@
     SignupController.$inject = ['UserService', 'MenuService'];
     function SignupController(UserService, MenuService) {
         var ctrl = this;
-        ctrl.userInfo = {
-            firstName: '',
-            lastName: '',
-            emailAddress: '',
-            phoneNumber: '',
-            favoriteDish: ''
-        };
+        ctrl.userInfo = UserService.getUser();
 
         ctrl.signupComplete = false;
         ctrl.message = '';
