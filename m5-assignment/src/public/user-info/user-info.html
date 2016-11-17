@@ -1,0 +1,23 @@
+<div class="container">
+    <h2 id="menu-categories-title" class="text-center">
+        My Info
+    </h2>
+
+    <div class="panel panel-primary" ng-if="!userInfoCtrl.notRegistered">
+        <div class="panel-body user-info">
+            <dl class="dl-horizontal">
+                <dt>First Name:</dt> <dd>{{userInfoCtrl.userInfo.firstName}}</dd>
+                <dt>Last Name:</dt> <dd>{{userInfoCtrl.userInfo.lastName}}</dd>
+                <dt>Email:</dt> <dd>{{userInfoCtrl.userInfo.emailAddress}}</dd>
+                <dt>Phone:</dt> <dd>{{userInfoCtrl.userInfo.phoneNumber}}</dd>
+                <dt>Favorite Dish:</dt> <dd>{{userInfoCtrl.userInfo.favoriteDish}}</dd>
+            </dl>
+
+            <menu-item menu-item="userInfoCtrl.userInfo.dishInfo"></menu-item>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" ng-if="userInfoCtrl.notRegistered">
+        <p>Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></p>
+    </div>
+</div>

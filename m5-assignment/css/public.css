@@ -183,3 +183,24 @@ h3.menu-item-title {
     width: 100%;
   }
 }
+
+.ng-touched.ng-valid {
+  border: 2px green solid;
+}
+
+.ng-touched.ng-invalid {
+  border: 2px red solid;
+}
+
+.menu-item-short-name {
+  color: white;
+}
+
+.user-info {
+  color: darkred;
+  background-color: wheat;
+}
+
+.panel-heading {
+  background-color: maroon;
+}
